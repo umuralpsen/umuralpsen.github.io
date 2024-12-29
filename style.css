@@ -610,7 +610,6 @@ section h2::after {
     font-size: 1.2rem;
 }
 
-/* Navbar Styles - Köşeleri yumuşatıldı */
 .navbar {
     position: fixed;
     top: 1rem;
@@ -643,7 +642,6 @@ section h2::after {
     color: var(--accent);
 }
 
-/* Mobil responsive güncelleme */
 @media (max-width: 768px) {
     .logo {
         left: 1rem;
@@ -661,7 +659,6 @@ section h2::after {
     }
 }
 
-/* Tema toggle butonu */
 .theme-toggle button {
     background: none;
     border: none;
@@ -676,7 +673,6 @@ section h2::after {
     color: var(--accent);
 }
 
-/* Dil toggle butonu */
 .lang-toggle button {
     background: none;
     border: 1px solid var(--text-primary);
@@ -693,7 +689,6 @@ section h2::after {
     border-color: var(--accent);
 }
 
-/* Scroll to top button */
 .scroll-to-top {
     position: fixed;
     bottom: 2rem;
@@ -722,7 +717,6 @@ section h2::after {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* Genel Animasyon Stilleri */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -733,13 +727,11 @@ section h2::after {
     to { transform: translateX(0); opacity: 1; }
 }
 
-/* Smooth Sayfa Geçişleri */
 .section {
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
 }
 
-/* Hover Efektleri */
 .nav-link {
     position: relative;
     transition: color 0.3s ease;
@@ -760,7 +752,6 @@ section h2::after {
     width: 100%;
 }
 
-/* Card Hover Efektleri */
 .project-card, .blog-card, .skill-item {
     transition: all 0.3s ease;
 }
@@ -774,9 +765,7 @@ section h2::after {
     background: linear-gradient(90deg, var(--accent) 0%, #ffd700 100%);
 }
 
-/* Responsive İyileştirmeler */
 @media (min-width: 768px) and (max-width: 1024px) {
-    /* Tablet Optimizasyonu */
     .container {
         padding: 0 5%;
     }
@@ -788,14 +777,12 @@ section h2::after {
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {
-    /* Laptop Optimizasyonu */
     .container {
         max-width: 1140px;
     }
 }
 
 @media (min-width: 1366px) {
-    /* Geniş Ekran Optimizasyonu */
     .container {
         max-width: 1320px;
     }

@@ -154,7 +154,6 @@ const animateStatistics = () => {
     });
 };
 
-// Tema değiştirme fonksiyonu
 const handleThemeToggle = () => {
     const themeToggle = document.getElementById('themeToggle');
     const icon = themeToggle.querySelector('i');
@@ -163,17 +162,14 @@ const handleThemeToggle = () => {
         document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
         icon.className = document.body.dataset.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         
-        // Tema tercihini kaydet
         localStorage.setItem('theme', document.body.dataset.theme);
     });
     
-    // Kaydedilmiş tema tercihini yükle
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.body.dataset.theme = savedTheme;
     icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 };
 
-// Dil değiştirme fonksiyonu
 const handleLanguageToggle = () => {
     const langToggle = document.getElementById('langToggle');
     const translations = {
@@ -188,13 +184,10 @@ const handleLanguageToggle = () => {
             phone: 'CONTACT',
             location: 'LOCATION',
             downloadCV: 'Download CV',
-            // Proje başlıkları ve açıklamaları
             projectTitle: 'GPR AND AI FOR BUILDING DIGITAL SIMULATION',
             projectDescription: 'A project that aims to combine GPR machine and Artificial Intelligence to simulate the building and reveal its weaknesses.',
-            // Eğitim bilgileri
             university: 'Istanbul Technical University',
             department: 'Computer Engineering',
-            // Form placeholder'ları
             namePlaceholder: 'Name',
             emailPlaceholder: 'Email',
             messagePlaceholder: 'Message',
@@ -230,13 +223,10 @@ const handleLanguageToggle = () => {
             phone: 'İLETİŞİM',
             location: 'KONUM',
             downloadCV: 'CV İndir',
-            // Proje başlıkları ve açıklamaları
             projectTitle: 'BİNA DİJİTAL SİMÜLASYONU İÇİN GPR VE YAPAY ZEKA',
             projectDescription: 'GPR cihazı ve Yapay Zeka\'yı birleştirerek binanın simülasyonunu oluşturmayı ve zayıf noktalarını ortaya çıkarmayı amaçlayan bir proje.',
-            // Eğitim bilgileri
             university: 'İstanbul Teknik Üniversitesi',
             department: 'Bilgisayar Mühendisliği',
-            // Form placeholder'ları
             namePlaceholder: 'İsim',
             emailPlaceholder: 'E-posta',
             messagePlaceholder: 'Mesaj',
@@ -262,9 +252,7 @@ const handleLanguageToggle = () => {
         }
     };
 
-    // İçerik güncelleme fonksiyonu
     const updateContent = (translations) => {
-        // Navigation linkleri
         document.querySelectorAll('.nav-link').forEach(link => {
             const key = link.getAttribute('href').substring(1);
             if (translations[key]) {
@@ -272,10 +260,8 @@ const handleLanguageToggle = () => {
             }
         });
 
-        // Başlık ve alt başlık
         document.querySelector('.title').textContent = translations.title;
 
-        // İletişim bilgileri
         document.querySelectorAll('.contact-item p').forEach(item => {
             const originalText = item.getAttribute('data-original') || item.textContent;
             if (!item.getAttribute('data-original')) {
@@ -287,10 +273,8 @@ const handleLanguageToggle = () => {
             }
         });
 
-        // CV indirme butonu
         document.querySelector('.cv-download-btn').textContent = translations.downloadCV;
 
-        // Proje başlığı ve açıklaması
         const projectTitle = document.querySelector('.project-card h3');
         const projectDesc = document.querySelector('.project-card p');
         if (projectTitle && projectDesc) {
@@ -298,7 +282,6 @@ const handleLanguageToggle = () => {
             projectDesc.textContent = translations.projectDescription;
         }
 
-        // Form placeholder'ları
         const form = document.querySelector('.contact-form');
         if (form) {
             form.querySelector('input[type="text"]').placeholder = translations.namePlaceholder;
@@ -307,7 +290,6 @@ const handleLanguageToggle = () => {
             form.querySelector('button').textContent = translations.sendButton;
         }
 
-        // Tüm section başlıklarını güncelle
         const sections = document.querySelectorAll('section[id]');
         sections.forEach(section => {
             const sectionId = section.id;
@@ -318,7 +300,6 @@ const handleLanguageToggle = () => {
             }
         });
 
-        // About Me başlığını güncelle
         const aboutSection = document.querySelector('#about');
         if (aboutSection) {
             const aboutTitle = aboutSection.querySelector('h2');
@@ -332,7 +313,6 @@ const handleLanguageToggle = () => {
             }
         }
 
-        // Diğer başlıkları güncelle
         document.querySelectorAll('section').forEach(section => {
             const sectionId = section.getAttribute('id');
             if (sectionId === 'about') {
@@ -341,7 +321,6 @@ const handleLanguageToggle = () => {
                     titleElement.textContent = translations.aboutMeTitle;
                 }
             }
-            // ... diğer section güncellemeleri ...
         });
     };
 
@@ -352,14 +331,11 @@ const handleLanguageToggle = () => {
         document.documentElement.lang = newLang;
         updateContent(translations[newLang]);
         
-        // Dil tercihini kaydet
         localStorage.setItem('lang', newLang);
         
-        // Buton metnini güncelle
         langToggle.textContent = newLang.toUpperCase() === 'TR' ? 'EN/TR' : 'TR/EN';
     });
 
-    // Sayfa yüklendiğinde kaydedilmiş dil tercihini kontrol et
     const savedLang = localStorage.getItem('lang') || 'tr';
     if (savedLang !== document.documentElement.lang) {
         document.documentElement.lang = savedLang;
@@ -368,7 +344,6 @@ const handleLanguageToggle = () => {
     }
 };
 
-// Scroll to top fonksiyonu
 const handleScrollToTop = () => {
     const scrollBtn = document.getElementById('scrollToTop');
     
@@ -400,7 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
     handleLanguageToggle();
     handleScrollToTop();
 
-    // Görsellerin yüklenme performansını izle
     if ('PerformanceObserver' in window) {
         const observer = new PerformanceObserver((list) => {
             list.getEntries().forEach((entry) => {
@@ -412,7 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe({ entryTypes: ['resource'] });
     }
 
-    // Görsel önbelleğe alma
     const preloadImages = () => {
         const images = document.querySelectorAll('img[data-src]');
         images.forEach(img => {
@@ -421,7 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // IntersectionObserver ile lazy loading
     const lazyLoad = () => {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -439,7 +411,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Mevcut fonksiyonlarınıza ekleyin
     preloadImages();
     lazyLoad();
 }); 
