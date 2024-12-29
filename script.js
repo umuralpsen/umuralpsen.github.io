@@ -363,6 +363,29 @@ const handleScrollToTop = () => {
     });
 };
 
+const handleMobileMenu = () => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+        }
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     observeElements();
     typeEffect();
@@ -374,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleThemeToggle();
     handleLanguageToggle();
     handleScrollToTop();
+    handleMobileMenu();
 
     if ('PerformanceObserver' in window) {
         const observer = new PerformanceObserver((list) => {

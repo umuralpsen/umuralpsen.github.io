@@ -258,22 +258,83 @@ h1::after, h2::after {
         width: 100%;
         height: auto;
         position: relative;
-        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        padding: 1rem;
+        border-radius: 0;
     }
     
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding-top: 5rem;
+        padding: 1rem;
     }
     
-    body {
+    .navbar {
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        padding: 0.5rem;
+        border-radius: 0;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-card);
         flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
     }
     
-    .services-grid,
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .tools-grid,
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-form {
+        padding: 1rem;
+    }
+    
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .social-links {
+        margin-top: 1rem;
+    }
+    
+    .project-details {
+        left: 0;
+        padding: 1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 250px;
+    }
+    
+    .main-content {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+    }
+    
+    .tools-grid,
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -786,4 +847,14 @@ section h2::after {
     .container {
         max-width: 1320px;
     }
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
 }
