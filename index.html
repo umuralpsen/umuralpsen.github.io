@@ -2,7 +2,8 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
     <meta name="description" content="İsmet Umuralp ŞEN - Computer Engineer, Full Stack Developer. Specialized in web development, AI, and software engineering.">
     <meta name="keywords" content="İsmet Umuralp ŞEN, Computer Engineer, Full Stack Developer, Software Engineer, Istanbul">
     <meta name="author" content="İsmet Umuralp ŞEN">
@@ -19,9 +20,7 @@
     
     <title>Portfolio | İsmet Umuralp ŞEN - Computer Engineer</title>
     
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
@@ -30,12 +29,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#ffd700">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <style>
+        .sidebar, .navbar { opacity: 1 !important }
+    </style>
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-<body>
+<body class="mobile-view">
+    <button class="sidebar-toggle" aria-label="sidebar menu" onclick="toggleSidebar()">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+    </button>
+
+    <button class="navbar-toggle" aria-label="navbar menu" onclick="mobileMenu.toggle()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="mobile-overlay" onclick="toggleSidebar()"></div>
+
     <div class="sidebar">
         <div class="profile">
             <div class="avatar">
-                <img src="images/avatar.jpg" alt="Avatar" loading="lazy" width="150" height="150">
+                <img src="images/avatar.jpg" 
+                     alt="İsmet Umuralp ŞEN" 
+                     loading="lazy"
+                     width="150" 
+                     height="150"
+                     style="aspect-ratio: 1/1"
+                     decoding="async">
             </div>
             <h2>İsmet Umuralp ŞEN</h2>
             <p class="title">Computer Engineer</p>
@@ -55,8 +83,12 @@
             </div>
         </div>
         <div class="social-links">
-            <a href="https://linkedin.com/in/ismet-umuralp-şen" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/umuralpsen" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/ismet-umuralp-şen" target="_blank" aria-label="LinkedIn Profile">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/umuralpsen" target="_blank" aria-label="GitHub Profile">
+                <i class="fab fa-github"></i>
+            </a>
         </div>
         <div class="cv-download">
             <a href="downloads/İSMETUMURALPŞEN_CV.pdf" download class="cv-download-btn">
@@ -67,7 +99,7 @@
     </div>
 
     <nav class="navbar">
-        <button class="mobile-menu-toggle">
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
             <i class="fas fa-bars"></i>
         </button>
         <ul class="nav-links">
@@ -109,8 +141,17 @@
                     <h3>Programming</h3>
                     <div class="tool-tags">
                         <span class="tag">C++</span>
-                        <span class="tag">Python</span>
+                        <span class="tag">OOP</span>
                         <span class="tag">JavaScript</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="C++" data-level="85"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="OOP" data-level="65"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="JavaScript" data-level="35"></div>
                     </div>
                 </div>
                 
@@ -119,6 +160,9 @@
                     <h3>Databases</h3>
                     <div class="tool-tags">
                         <span class="tag">MySQL</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="MySQL" data-level="70"></div>
                     </div>
                 </div>
                 
@@ -134,8 +178,8 @@
             </div>
         </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
+        <section aria-labelledby="projects-heading">
+            <h2 id="projects-heading" class="visually-hidden">Projects</h2>
             <div class="projects-grid">
                 <a href="#" class="project-card">
                     <div class="project-info">
@@ -143,9 +187,11 @@
                         <p>A project that aims to combine GPR machine and Artificial Intelligence to simulate the building and reveal its weaknesses.</p>
                         <div class="project-tags">
                             <span class="tag">C++</span>
+                            <span class="project-date">March 2024 - Present</span>
                         </div>
                     </div>
-                    <span class="project-date">March 2024 - Present</span>
+                    <div class="project-links">
+                    </div>
                 </a>
             </div>
         </section>
@@ -163,13 +209,55 @@
             </div>
         </section>
 
+        <section id="games" class="section">
+            <h2>Mini Game</h2>
+            <div class="section-content">
+                <p>I love to play minesweeper all the time. Feel free to play and have fun!</p>
+                
+                <div id="minesweeper-container" class="minesweeper-container">
+                </div>
+            </div>
+        </section>
+
         <section id="contact">
             <h2>Contact Me</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <button type="submit">Send Message</button>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required 
+                        minlength="2"
+                        pattern="[A-Za-z\s]+"
+                        title="Please enter a valid name"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        required 
+                        minlength="10"
+                        rows="5"
+                    ></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
             </form>
         </section>
     </main>
@@ -181,9 +269,9 @@
         <div class="project-content">
             <h2>GPR AND AI FOR BUILDING DIGITAL SIMULATION</h2>
             <div class="project-meta">
-                <span class="project-date">March 2024 - Present</span>
                 <div class="project-tags">
                     <span class="tag">C++</span>
+                    <span class="project-date">March 2024 - Present</span>
                 </div>
             </div>
             <div class="project-description">
@@ -197,5 +285,9 @@
     <button id="scrollToTop" class="scroll-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <script src="js/mobile-interactions.js" defer></script>
 </body>
 </html> 
+
+ <!-- Buraya kadar geldiyseniz bana iş verin :) -->

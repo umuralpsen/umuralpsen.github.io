@@ -4,7 +4,9 @@ const urlsToCache = [
     '/index.html',
     '/style.css',
     '/script.js',
-    '/images/*'
+    '/images/avatar.jpg',
+    '/images/favicon.png',
+    '/downloads/İSMETUMURALPŞEN_CV.pdf'
 ];
 
 self.addEventListener('install', event => {
@@ -32,4 +34,4 @@ self.addEventListener('fetch', event => {
                 .then(response => response || fetch(event.request))
         );
     }
-}); 
+});
