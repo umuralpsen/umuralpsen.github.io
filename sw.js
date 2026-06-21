@@ -6,7 +6,7 @@ const urlsToCache = [
     '/script.js',
     '/images/avatar.jpg',
     '/images/favicon.png',
-    '/downloads/İSMETUMURALPŞEN_CV.pdf'
+    '/downloads/İsmetUmuralpŞEN_CV.pdf'
 ];
 
 self.addEventListener('install', event => {
