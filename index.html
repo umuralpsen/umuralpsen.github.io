@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" 
-          content="width=device-width, initial-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="İsmet Umuralp ŞEN - Computer Engineer, Full Stack Developer. Specialized in web development, AI, and software engineering.">
     <meta name="keywords" content="İsmet Umuralp ŞEN, Computer Engineer, Full Stack Developer, Software Engineer, Istanbul">
     <meta name="author" content="İsmet Umuralp ŞEN">
@@ -91,7 +91,7 @@
             </a>
         </div>
         <div class="cv-download">
-            <a href="downloads/İSMETUMURALPŞEN_CV.pdf" download class="cv-download-btn">
+            <a href="downloads/İsmetUmuralpŞEN_CV.pdf" download class="cv-download-btn">
                 <i class="fas fa-download"></i>
                 Download CV
             </a>
@@ -104,7 +104,8 @@
         </button>
         <ul class="nav-links">
             <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#tools" class="nav-link">Tools</a></li>
+            <li><a href="#tools" class="nav-link">Skills</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#education" class="nav-link">Education</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -134,45 +135,72 @@
         </section>
 
         <section id="tools">
-            <h2>Tools & Technologies</h2>
+            <h2>Skills & Technologies</h2>
             <div class="tools-grid">
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-code"></i></div>
-                    <h3>Programming</h3>
+                    <h3>Programming Languages</h3>
                     <div class="tool-tags">
                         <span class="tag">C++</span>
-                        <span class="tag">OOP</span>
-                        <span class="tag">JavaScript</span>
+                        <span class="tag">C</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" data-skill="C++" data-level="85"></div>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" data-skill="OOP" data-level="65"></div>
+                        <div class="skill-progress" data-skill="Python" data-level="80"></div>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" data-skill="JavaScript" data-level="35"></div>
+                        <div class="skill-progress" data-skill="C" data-level="70"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="SQL" data-level="70"></div>
                     </div>
                 </div>
-                
+
                 <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-database"></i></div>
-                    <h3>Databases</h3>
+                    <div class="tool-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI & Data</h3>
                     <div class="tool-tags">
-                        <span class="tag">MySQL</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-skill="MySQL" data-level="70"></div>
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Databases</span>
                     </div>
                 </div>
-                
+
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-cloud"></i></div>
-                    <h3>Cloud & DevOps</h3>
+                    <h3>Tools & Cloud</h3>
                     <div class="tool-tags">
-                        <span class="tag">Docker</span>
+                        <span class="tag">Microsoft Azure</span>
                         <span class="tag">Git</span>
-                        <span class="tag">VsCode</span>
+                        <span class="tag">VS Code</span>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-language"></i></div>
+                    <h3>Languages</h3>
+                    <div class="tool-tags">
+                        <span class="tag">Turkish (Native)</span>
+                        <span class="tag">English (Upper Int.)</span>
+                        <span class="tag">Italian (Entry)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">July 2025 - August 2025</div>
+                    <div class="timeline-content">
+                        <h3>NTT Data Business Solutions</h3>
+                        <p class="timeline-role">IT Department</p>
+                        <p>Worked on Microsoft Azure Systems, SQL, Databases and Servers.</p>
                     </div>
                 </div>
             </div>
@@ -181,13 +209,27 @@
         <section aria-labelledby="projects-heading">
             <h2 id="projects-heading" class="visually-hidden">Projects</h2>
             <div class="projects-grid">
-                <a href="#" class="project-card">
+                <a href="#" class="project-card" data-project="gpr">
                     <div class="project-info">
                         <h3>GPR AND AI FOR BUILDING DIGITAL SIMULATION</h3>
                         <p>A project that aims to combine GPR machine and Artificial Intelligence to simulate the building and reveal its weaknesses.</p>
                         <div class="project-tags">
                             <span class="tag">C++</span>
                             <span class="project-date">March 2024 - Present</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </a>
+                <a href="#" class="project-card" data-project="liver">
+                    <div class="project-info">
+                        <h3>DETECTION OF LIVER STEATOSIS FROM MICROSCOPY IMAGES</h3>
+                        <p>A project that detects liver steatosis from microscopy images using deep learning. Supported by TÜBİTAK.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">TÜBİTAK</span>
+                            <span class="project-date">October 2025 - Present</span>
                         </div>
                     </div>
                     <div class="project-links">
@@ -200,10 +242,11 @@
             <h2>Education</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2021 - Present</div>
+                    <div class="timeline-date">September 2021 - Present</div>
                     <div class="timeline-content">
                         <h3>Istanbul Technical University</h3>
-                        <p>Computer Engineering</p>
+                        <p class="timeline-role">Bachelor of Science in Computer Engineering</p>
+                        <p>Coursework: Deep Learning, Data Structures and Algorithms, Machine Learning.</p>
                     </div>
                 </div>
             </div>
@@ -266,19 +309,7 @@
         <button class="back-button">
             <i class="fas fa-arrow-left"></i> Back to Projects
         </button>
-        <div class="project-content">
-            <h2>GPR AND AI FOR BUILDING DIGITAL SIMULATION</h2>
-            <div class="project-meta">
-                <div class="project-tags">
-                    <span class="tag">C++</span>
-                    <span class="project-date">March 2024 - Present</span>
-                </div>
-            </div>
-            <div class="project-description">
-                <p>A project that aims to combine GPR machine and Artificial Intelligence to simulate the building and reveal its weaknesses.</p>
-            </div>
-            <div class="project-gallery"></div>
-        </div>
+        <div class="project-content" id="project-detail-content"></div>
     </div>
     <script src="script.js"></script>
     <script src="sw.js"></script>

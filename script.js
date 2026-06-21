@@ -3,19 +3,123 @@ const DOM = {
     getAll: selector => document.querySelectorAll(selector)
 };
 
+const PROJECT_DATA = {
+    gpr: {
+        title: 'GPR AND AI FOR BUILDING DIGITAL SIMULATION',
+        date: 'March 2024 - Present',
+        tags: ['C++', 'Artificial Intelligence', 'Simulation'],
+        github: null,
+        sections: [
+            {
+                heading: 'Overview',
+                body: 'A project that aims to combine Ground Penetrating Radar (GPR) technology with Artificial Intelligence to build a digital simulation of structures and reveal their structural weaknesses. By processing GPR scan data, the system reconstructs a digital model of a building and highlights potential defects that are not visible to the naked eye.'
+            },
+            {
+                heading: 'Goal',
+                body: 'Enable non-destructive structural analysis by merging sensor data with AI-driven interpretation, helping engineers detect risks early.'
+            }
+        ],
+        tech: ['C++', 'GPR Signal Processing', 'AI / Machine Learning']
+    },
+    liver: {
+        title: 'DETECTION OF LIVER STEATOSIS FROM MICROSCOPY IMAGES',
+        date: 'October 2025 - Present',
+        tags: ['Python', 'PyTorch', 'ResNet18', 'Deep Learning', 'TÜBİTAK'],
+        github: 'https://github.com/umuralpsen/liversteatosis',
+        subtitle: 'Istanbul Technical University — Computer Engineering Graduation Project · Advisor: Prof. Dr. Behçet Uğur Töreyin · Supported by TÜBİTAK',
+        sections: [
+            {
+                heading: 'Overview',
+                body: 'An end-to-end deep learning pipeline for the automated detection of liver steatosis (hepatic steatosis) from whole-slide histopathology (WSI) images. Hepatic steatosis — the excessive accumulation of lipid droplets within hepatocytes — is the primary histopathological feature of non-alcoholic fatty liver disease (NAFLD). The system classifies steatotic vs. normal liver tissue directly from raw SVS slides without any manual annotation, and is designed to run entirely on CPU hardware.'
+            },
+            {
+                heading: 'Pipeline',
+                list: [
+                    'Patch Extraction (patch.py): WSIs are tiled into 256×256 patches with OpenSlide; a tissue-detection filter discards background.',
+                    'Automated Labeling (label.py): Patches labeled via morphological blob detection (≥5 blobs → steatosis).',
+                    'Model Training (train.py): An ImageNet-pretrained ResNet18 is fine-tuned with patient-level 3-fold GroupKFold cross-validation.',
+                    'Evaluation (evaluate.py): Confusion matrix, ROC/AUC and medical metrics (sensitivity, specificity, PPV, NPV, F1).',
+                    'Interpretability (gradcam.py): Grad-CAM heatmaps visualize the regions the model focuses on.'
+                ]
+            },
+            {
+                heading: 'Results (Best model — Fold 1)',
+                list: [
+                    'Accuracy: 86.30%',
+                    'AUC (ROC): 0.9476',
+                    'F1-Score: 0.8546',
+                    'Sensitivity: 0.8151 · Specificity: 0.9098',
+                    'PPV: 0.8981 · NPV: 0.8345'
+                ]
+            },
+            {
+                heading: 'Method Details',
+                list: [
+                    'Architecture: ResNet18 (ImageNet pretrained), final layer 512 → 2.',
+                    'Loss: Weighted Cross-Entropy for class imbalance.',
+                    'Optimization: Adam (lr = 1e-4) with ReduceLROnPlateau.',
+                    'Augmentation: flips, ±15° rotation, color jitter, affine translation.',
+                    'Patient-level GroupKFold cross-validation prevents data leakage.'
+                ]
+            }
+        ],
+        tech: ['Python', 'PyTorch', 'ResNet18', 'OpenSlide', 'Grad-CAM', 'scikit-learn']
+    }
+};
+
+const buildProjectDetail = (data) => {
+    const tagsHtml = data.tags.map(t => `<span class="tag">${t}</span>`).join('');
+    const subtitleHtml = data.subtitle ? `<p class="project-detail-subtitle">${data.subtitle}</p>` : '';
+    const githubHtml = data.github
+        ? `<a href="${data.github}" target="_blank" rel="noopener" class="project-github-link"><i class="fab fa-github"></i> View on GitHub</a>`
+        : '';
+
+    const sectionsHtml = data.sections.map(sec => {
+        const inner = sec.list
+            ? `<ul>${sec.list.map(li => `<li>${li}</li>`).join('')}</ul>`
+            : `<p>${sec.body}</p>`;
+        return `<div class="project-detail-section"><h3>${sec.heading}</h3>${inner}</div>`;
+    }).join('');
+
+    const techHtml = data.tech
+        ? `<div class="project-detail-section"><h3>Tech Stack</h3><div class="project-tags">${data.tech.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>`
+        : '';
+
+    return `
+        <h2>${data.title}</h2>
+        ${subtitleHtml}
+        <div class="project-meta">
+            <div class="project-tags">
+                ${tagsHtml}
+                <span class="project-date">${data.date}</span>
+            </div>
+        </div>
+        ${githubHtml}
+        ${sectionsHtml}
+        ${techHtml}
+    `;
+};
+
 const handleProjectDetails = () => {
     const projectCards = DOM.getAll('.project-card');
     const projectDetails = DOM.get('#project-details');
     const backButton = projectDetails.querySelector('.back-button');
+    const contentEl = DOM.get('#project-detail-content');
 
     const toggleProjectDetails = (show = true) => {
         projectDetails.classList.toggle('hidden', !show);
         document.body.style.overflow = show ? 'hidden' : '';
+        if (show) projectDetails.scrollTop = 0;
     };
 
     projectCards.forEach(card => {
         card.addEventListener('click', e => {
             e.preventDefault();
+            const key = card.dataset.project;
+            const data = PROJECT_DATA[key];
+            if (data && contentEl) {
+                contentEl.innerHTML = buildProjectDetail(data);
+            }
             toggleProjectDetails(true);
         });
     });
@@ -251,7 +355,8 @@ const handleLanguageToggle = () => {
     const translations = {
         en: {
             about: 'About',
-            tools: 'Tools',
+            tools: 'Skills',
+            experience: 'Experience',
             projects: 'Projects',
             education: 'Education',
             contact: 'Contact',
@@ -270,7 +375,7 @@ const handleLanguageToggle = () => {
             sendButton: 'Send Message',
             aboutMeTitle: 'About Me',
             aboutMeText: "As a dedicated fourth-year Bachelor of Science student in Computer Engineering, I am passionate about leveraging technology to solve complex problems. Throughout my academic journey, I have honed my skills in various programming languages and project management. I am eager to apply my theoretical knowledge to real-world challenges in the field of computer engineering. My goal is to contribute to innovative projects that push the boundaries of technology while continuously expanding my expertise in this ever-evolving field.",
-            toolsTitle: 'Tools & Skills',
+            toolsTitle: 'Skills & Technologies',
             projectsTitle: 'Projects',
             educationTitle: 'Education',
             contactTitle: 'Contact Me',
@@ -281,15 +386,17 @@ const handleLanguageToggle = () => {
             },
             sectionTitles: {
                 'about': 'About Me',
-                'tools': 'Tools & Skills',
+                'tools': 'Skills & Technologies',
+                'experience': 'Experience',
                 'projects': 'Projects',
                 'education': 'Education',
-                'contact': 'Contact'
+                'contact': 'Contact Me'
             }
         },
         tr: {
             about: 'Hakkımda',
-            tools: 'Araçlar',
+            tools: 'Yetenekler',
+            experience: 'Deneyim',
             projects: 'Projeler',
             education: 'Eğitim',
             contact: 'İletişim',
@@ -308,7 +415,7 @@ const handleLanguageToggle = () => {
             sendButton: 'Mesaj Gönder',
             aboutMeTitle: 'Hakkımda',
             aboutMeText: "Bilgisayar Mühendisliği'nde dördüncü sınıf lisans öğrencisi olarak, karmaşık problemleri çözmek için teknolojiyi kullanma konusunda tutkulu birisiyim. Akademik yolculuğum boyunca, çeşitli programlama dilleri ve proje yönetimi konularında becerilerimi geliştirdim. Teorik bilgilerimi bilgisayar mühendisliği alanındaki gerçek dünya zorluklarına uygulamak için sabırsızlanıyorum. Amacım, bu sürekli gelişen alanda uzmanlığımı genişletirken teknolojinin sınırlarını zorlayan yenilikçi projelere katkıda bulunmaktır.",
-            toolsTitle: 'Araçlar & Yetenekler',
+            toolsTitle: 'Yetenekler & Teknolojiler',
             projectsTitle: 'Projeler',
             educationTitle: 'Eğitim',
             contactTitle: 'İletişim',
@@ -319,7 +426,8 @@ const handleLanguageToggle = () => {
             },
             sectionTitles: {
                 'about': 'Hakkımda',
-                'tools': 'Araçlar & Yetenekler',
+                'tools': 'Yetenekler & Teknolojiler',
+                'experience': 'Deneyim',
                 'projects': 'Projeler',
                 'education': 'Eğitim',
                 'contact': 'İletişim'
